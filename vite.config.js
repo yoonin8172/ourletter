@@ -1,10 +1,5 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    server: {
-        host: true,
-        port: 5173,
-        open: true,
-        strictPort: true
-    }
+    base: '/ourletter/', // ← 레포 이름 정확히
 });
