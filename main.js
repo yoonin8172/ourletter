@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nicknameInput.value = '';
                 messageInput.value = '';
                 songInput.value = '';
-            }, 1200); // ← 여기서 시간 조절 (ms)
+            }, 2600); // ← 여기서 시간 조절 (ms)
 
         } catch (error) {
             savingText.textContent = '저장에 실패했어요 😢';
