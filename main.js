@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showScreen('board');
     });
 
-    // 🔥 저장하기 → Firestore에 저장
     saveBtn.addEventListener('click', async () => {
         const nickname = nicknameInput.value.trim();
         const message = messageInput.value.trim();
@@ -81,29 +80,30 @@ document.addEventListener('DOMContentLoaded', () => {
         confirmBtn.style.visibility = 'hidden';
 
         try {
-            // 🔥 실제 저장 (빠르게 끝나도 상관 없음)
-            await addDoc(collection(db, 'letters'), {
-                nickname,
-                message,
-                song,
-                createdAt: Date.now(),
-            });
+            // 🔥 저장 + 최소 대기시간을 동시에 시작
+            await Promise.all([
+                addDoc(collection(db, 'letters'), {
+                    nickname,
+                    message,
+                    song,
+                    createdAt: Date.now(),
+                }),
+                new Promise(resolve => setTimeout(resolve, 2500)) // 최소 2.5초
+            ]);
 
-            // 🔑 연출용 딜레이
-            setTimeout(() => {
-                savingText.textContent = '저장되었습니다!';
-                confirmBtn.style.visibility = 'visible';
+            // 👉 여기 도달하면 "반드시" 2.5초 이상 지난 상태
+            savingText.textContent = '저장되었습니다!';
+            confirmBtn.style.visibility = 'visible';
 
-                nicknameInput.value = '';
-                messageInput.value = '';
-                songInput.value = '';
-            }, 2600); // ← 여기서 시간 조절 (ms)
-
+            nicknameInput.value = '';
+            messageInput.value = '';
+            songInput.value = '';
         } catch (error) {
             savingText.textContent = '저장에 실패했어요 😢';
             console.error(error);
         }
     });
+
 
     // 확인하기 → 우편함
     confirmBtn.addEventListener('click', async () => {
