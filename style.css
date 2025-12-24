@@ -1,0 +1,252 @@
+@font-face {
+    font-family: 'SchoolSafeBoardMarker';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/HakgyoansimBoadmarkerR.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+:root {
+    --bg-main: #f6f5ef;
+    --bg-card: #f9f8f2;
+
+    --text-main: #2a2a2a;
+    --text-sub: #7a7a7a;
+
+    --accent-green: #6f8f7a;
+    --accent-green-dark: #5f7f6a;
+    --accent-lightgreen: #a8c7ae;
+
+    --border-soft: #e2e1db;
+}
+
+/* ===== 기본 ===== */
+/* ===== 기본 ===== */
+body {
+    margin: 0;
+    padding: 16px;
+    font-family: 'SchoolSafeBoardMarker', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+    background-image: url('./paper.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: var(--text-main);
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ================= 홈 ================= */
+.screen.active.center-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 10vh;
+}
+
+.center-screen h1 {
+    font-size: 34px;
+    margin: 0 0 18px;
+}
+
+.home-desc {
+    color: var(--text-sub);
+    line-height: 1.7;
+    margin: 0 0 30px;
+}
+
+/* 기존 내용 그대로 + 아래만 추가/수정 */
+
+.home-btns {
+    display: flex;
+    gap: 12px;
+}
+
+.home-btns.horizontal {
+    flex-direction: row;
+}
+
+.home-btns.horizontal button {
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+
+/* ================= 버튼 ================= */
+button {
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    padding: 12px 22px;
+    cursor: pointer;
+    width: auto;
+    font-family: inherit;
+    /* 🔑 폰트 통일 */
+}
+
+/* 메인 액션 */
+.primary-btn {
+    background: var(--accent-green);
+    color: #fff;
+    box-shadow: 0 4px 0 var(--accent-green-dark);
+}
+
+.primary-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--accent-green-dark);
+}
+
+/* 서브 액션 */
+.mailbox-btn {
+    background: var(--accent-lightgreen);
+    color: #fff;
+    box-shadow: 0 4px 0 #8fb39a;
+    /* 🔑 입체감 */
+}
+
+.mailbox-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #8fb39a;
+}
+
+
+/* ================= 작성 화면 ================= */
+.screen.active.form-screen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10vh;
+}
+
+.form-wrap {
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: var(--text-sub);
+}
+
+input,
+textarea {
+    display: block;
+    width: 88%;
+    margin: 6px auto 0;
+    font-size: 16px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-family: inherit;
+    /* 🔑 입력도 같은 폰트 */
+}
+
+input {
+    height: 38px;
+}
+
+textarea {
+    height: 90px;
+    resize: none;
+}
+
+/* 폼 버튼 */
+.form-btn {
+    display: block;
+    margin: 18px auto 0;
+}
+
+/* ================= 저장중 ================= */
+.saving-screen {
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.saving-screen.active {
+    display: flex;
+}
+
+#savingText {
+    font-size: 20px;
+    margin: 0 0 22px;
+}
+
+#confirmBtn {
+    margin-top: 22px;
+    visibility: hidden;
+    /* 🔑 공간은 유지 */
+}
+
+
+/* ================= 포스트잇 ================= */
+#postitContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.postit {
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 12px;
+}
+
+.postit .nickname {
+    font-size: 12px;
+    color: var(--text-sub);
+    margin-bottom: 4px;
+}
+
+.postit .message {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.postit .song {
+    font-size: 14px;
+    color: var(--accent-green);
+}
+
+/* ================= 홈으로 ================= */
+header {
+    display: flex;
+    justify-content: flex-start;
+}
+
+header button {
+    background: var(--accent-lightgreen);
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 16px;
+    border-radius: 12px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(246, 245, 239, 0.6);
+    /* 아이보리 필터 */
+    pointer-events: none;
+    z-index: -1;
+}

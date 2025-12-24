@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>이 편지는 우리에서부터 시작되어</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <!-- 홈 화면 -->
+    <section id="home" class="screen center-screen">
+        <h1>이 편지는<br>우리로부터 시작되어..</h1>
+        <p class="home-desc">
+            <br>2025년을 마친 우리에게<br>짧은 인사말과 음악 1곡을 남겨주세요.<br>
+            노래와 메시지는 모두 모여,<br>자동기술법을 통해 하나의 작품으로 만들어집니다.<br><br>
+            내일의 우리가 또다시 뚜벅뚜벅 걸어갈 수 있도록,<br>사랑과 응원의 메시지를 남겨주세요!<br>
+        </p>
+
+        <!-- 🔑 버튼 가로 배치 + 우편함 왼쪽 -->
+        <div class="home-btns horizontal">
+            <button id="goWriteBtn" class="primary-btn">작성하기</button>
+            <button id="goBoardBtn" class="mailbox-btn">우편함</button>
+
+        </div>
+    </section>
+
+    <!-- 작성 화면 -->
+    <section id="write" class="screen form-screen">
+        <div class="form-wrap">
+            <label>
+                닉네임
+                <input type="text" id="nickname" />
+            </label>
+
+            <label>
+                메시지 (60자 이내)
+                <textarea id="message" maxlength="60"></textarea>
+            </label>
+
+            <label>
+                노래
+                <input type="text" id="song" />
+            </label>
+
+            <button id="saveBtn" class="primary-btn form-btn">저장하기</button>
+        </div>
+    </section>
+
+    <!-- 저장 상태 화면 -->
+    <section id="saving" class="screen saving-screen">
+        <p id="savingText">저장중…</p>
+        <button id="confirmBtn" class="primary-btn">확인하기</button>
+
+    </section>
+
+    <!-- 포스트잇 화면 -->
+    <section id="board" class="screen">
+        <header>
+            <button id="goHomeBtn">홈으로</button>
+        </header>
+        <div id="postitContainer"></div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
