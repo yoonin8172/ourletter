@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         confirmBtn.style.visibility = 'hidden';
 
         try {
+            // 🔥 실제 저장 (빠르게 끝나도 상관 없음)
             await addDoc(collection(db, 'letters'), {
                 nickname,
                 message,
@@ -88,12 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 createdAt: Date.now(),
             });
 
-            savingText.textContent = '저장되었습니다!';
-            confirmBtn.style.visibility = 'visible';
+            // 🔑 연출용 딜레이
+            setTimeout(() => {
+                savingText.textContent = '저장되었습니다!';
+                confirmBtn.style.visibility = 'visible';
 
-            nicknameInput.value = '';
-            messageInput.value = '';
-            songInput.value = '';
+                nicknameInput.value = '';
+                messageInput.value = '';
+                songInput.value = '';
+            }, 1200); // ← 여기서 시간 조절 (ms)
+
         } catch (error) {
             savingText.textContent = '저장에 실패했어요 😢';
             console.error(error);
