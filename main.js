@@ -88,10 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     song,
                     createdAt: Date.now(),
                 }),
-                new Promise(resolve => setTimeout(resolve, 2500)) // 최소 2.5초
+                new Promise(resolve => setTimeout(resolve, 2000)) // 최소 2.5초
             ]);
 
-            // 👉 여기 도달하면 "반드시" 2.5초 이상 지난 상태
+            // 👉 여기 도달하면 "반드시" 2초 이상 지난 상태
             savingText.textContent = '저장되었습니다!';
             confirmBtn.style.visibility = 'visible';
 
